@@ -1,38 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" style="font-size: 100px">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-<!--    <link rel="stylesheet" href="/src/static/reset.css">-->
+    <!--    <link rel="stylesheet" href="/src/static/reset.css">-->
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_2643451_sivesjxgotf.css">
     <title>gshop_client</title>
     <style>
-      html,body,#app{
-        width: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but gshop_client doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-    <script>
-      window.onload = function () {
-        document.documentElement.style.fontSize = document.documentElement.clientWidth*100/375 + 'px'
-        let setTimeId
-
-        window.onresize = function () {
-          !!setTimeId && clearTimeout(setTimeId)
-          setTimeId = setTimeout(()=>{
-            console.log(1)
-          },300)
-          document.documentElement.style.fontSize = document.documentElement.clientWidth*100/375 + 'px'
+        html, body, #app {
+            width: 100%;
         }
-      }
-    </script>
-  </body>
+    </style>
+</head>
+<body>
+<noscript>
+    <strong>We're sorry but gshop_client doesn't work properly without JavaScript enabled. Please enable it to
+        continue.</strong>
+</noscript>
+<div id="app"></div>
+<!-- built files will be auto injected -->
+<script src="https://cdn.bootcdn.net/ajax/libs/fastclick/1.0.6/fastclick.js"></script>
+<script>
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function () {
+            FastClick.attach(document.body);
+        }, false);
+    }
+</script>
+</body>
 </html>

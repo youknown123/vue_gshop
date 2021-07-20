@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="order">
         Order
     </div>
 </template>
@@ -8,6 +8,10 @@
     export default {}
 </script>
 
-<style>
+<style lang="stylus" rel="stylesheet/stylus">
+    #order
+        &:after
+            content '哈哈哈'
+            background-color yellow
 
 </style>
