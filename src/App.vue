@@ -1,8 +1,7 @@
 <template>
     <div id="wrap">
-        <div class="header">{{$store.state.address}}</div>
         <router-view></router-view>
-        <FooterNavbar></FooterNavbar>
+        <FooterNavbar v-show="$route.meta.isShowFooter"></FooterNavbar>
 
     </div>
 </template>

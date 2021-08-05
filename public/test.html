@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+</head>
+<body style="height: 2000px">
+<button class="debounce">函数防抖</button>
+<button class="throttle">函数节流</button>
+
+
+<script>
+    /*
+    对于连续的事件响应我们只需要执行一次回调
+    函数防抖：高频次的点击只对间隔超过阈值的最后一次操作进行处理
+* 函数防抖(debounce)：
+*   概念： 延迟要执行的动作，若在延时的这段时间内，再次触发了，则取消之前开启的动作，重新计时。
+*   举例： 电脑无操作1分钟之内如果没有操作会进入休眠，当第40秒时鼠标被移动一下，重新计时1分钟。
+*   实现： 定时器。
+*   应用：搜索时等用户完整输入内容后再发送查询请求。
+    每次 resize/scroll 触发统计事件
+    文本输入的验证，连续输入文字后发送 AJAX 请求进行验证，验证一次就好。
+* */
+    var btn1 = document.querySelector('.debounce')
+    var btn2 = document.querySelector('.throttle')
+    btn1.addEventListener('click', debounce)
+    // btn2.addEventListener('click', throttle)
+    var count = 0
+    let setTimeId
+
+    function debounce() {
+        count++
+        !!setTimeId && clearTimeout(setTimeId)
+        setTimeId = setTimeout(function () {
+            console.log(`点击了第${count}次`)
+        }, 1000)
+
+    }
+
+    /*
+  * 函数节流(throttle)：
+  * 一个函数执行一次后，只有大于设定的执行周期后才会执行第二次
+  *
+  *   举例：fps游戏，鼠标按住不松手，子弹也不会连成一条线
+  *   实现：定时器、标识
+  *   需求：在鼠标滚轮滚动的时候，每隔2秒钟，打印一次
+  *   应用场景：
+  * DOM 元素的拖拽功能实现（mousemove）
+    搜索联想（keyup）
+    计算鼠标移动的距离（mousemove）
+    Canvas 模拟画板功能（mousemove）
+    射击游戏的 mousedown/keydown 事件（单位时间只能发射一颗子弹）
+    监听滚动事件判断是否到页面底部自动加载更多：给 scroll 加了 debounce 后，只有用户停止滚动后，才会判断是否到了页面底部；如果是 throttle 的话，只要页面滚动就会间隔一段时间判断一次.
+  * */
+    let isCanLog = true
+    // document.body.onscroll  = function () {
+    // function throttle() {
+    //
+    //      if (isCanLog){
+    //          console.log(1)
+    //          isCanLog = false
+    //          setTimeout(()=>{
+    //              isCanLog = true
+    //          },2000)
+    //      }
+    //
+    //  }
+    document.body.onscroll = function () {
+        if(isCanLog){
+            console.log('scrolling')
+            isCanLog = false
+            setTimeout(()=>{
+                isCanLog = true
+            },1000)
+        }
+    }
+    window.localStorage.setItem('zk','zhangkai')
+    localStorage.setItem('zk','hhahha')
+    console.log(localStorage.getItem('zk'))
+</script>
+</body>
+</html>

@@ -4,6 +4,7 @@ import Msite from "../pages/Msite/Msite";
 import Search from "../pages/Search/Search";
 import Order from "../pages/Order/Order";
 import Personal from "../pages/Personal/Personal";
+import Login from "../pages/Login/Login";
 
 Vue.use(VueRouter)
 export default new VueRouter({
@@ -12,19 +13,36 @@ export default new VueRouter({
     routes:[
         {
             path: '/msite',
-            component: Msite
+            component: Msite,
+            //路由元信息
+            meta:{
+                isShowFooter:true
+            }
         },
         {
             path: '/search',
-            component: Search
+            component: Search,
+            meta:{
+                isShowFooter:true
+            }
         },
         {
             path: '/order',
-            component: Order
+            component: Order,
+            meta:{
+                isShowFooter:true
+            }
         },
         {
             path: '/personal',
-            component: Personal
+            component: Personal,
+            meta:{
+                isShowFooter:true
+            }
+        },
+        {
+            path: '/login',
+            component: Login
         },
         {
             path: '/',
